@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinarSütUı", "PinarSütUı\PinarSütUı.csproj", "{DBA0B6C6-B594-4168-B3F9-55FC555E17BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinarSutApi", "PinarSutApi\PinarSutApi.csproj", "{20BF82B2-03A1-4879-888E-29779F3A6093}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBA0B6C6-B594-4168-B3F9-55FC555E17BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA0B6C6-B594-4168-B3F9-55FC555E17BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA0B6C6-B594-4168-B3F9-55FC555E17BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA0B6C6-B594-4168-B3F9-55FC555E17BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20BF82B2-03A1-4879-888E-29779F3A6093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20BF82B2-03A1-4879-888E-29779F3A6093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20BF82B2-03A1-4879-888E-29779F3A6093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20BF82B2-03A1-4879-888E-29779F3A6093}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC1C9BEB-1061-46BB-B5B7-065132EA9001}
+	EndGlobalSection
+EndGlobal

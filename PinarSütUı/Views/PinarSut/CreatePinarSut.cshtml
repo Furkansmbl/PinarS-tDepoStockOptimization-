@@ -1,0 +1,59 @@
+﻿@model CreatePinarSutDto
+@{
+    ViewData["Title"] = "CreatePinarSut";
+}
+
+<h1>CreatePinarSut</h1>
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Yeni Ürün-Talep Ekleme Sayfası</h6>
+                <form method="post">
+                    <label>Urun Kodu</label>
+                    <input type="member" asp-for="UrunKodu" class="form-control" />
+                    <br />
+                    <label>Urun Adi</label>
+                    <input type="text" asp-for="UrunAdi" class="form-control" />
+                    <br />
+                    <label>Talep Miktari</label>
+                    <input type="member" asp-for="TalepMiktari" class="form-control" />
+                    <br />
+                    <label>Urun Grubu</label>
+                    <input type="text" asp-for="UrunGrubu" class="form-control" />
+                    <br />
+                    <input type="hidden" class="form-control" asp-for="EklenmeTarihi" />
+
+                    <button class="btn btn-primary">Uretim Hattı Güncelle</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Sayfa yüklendiğinde çalışacak olan kod
+    document.addEventListener('DOMContentLoaded', function () {
+        // Eklenme/Güncellenme Tarihini al
+        var now = new Date();
+
+        // YYYY-MM-DDTHH:MM formatına dönüştür
+        var formattedDate = now.toISOString().slice(0, 16);
+
+        // EklenmeGuncellenmeTarihi alanını bul ve değerini güncelle
+        document.querySelector('[name="EklenmeTarihi"]').value = formattedDate;
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('UrunKodu').value = urlParams.get('UrunKodu');
+        document.getElementById('UrunAdi').value = urlParams.get('UrunAdi');
+        document.getElementById('TalepMiktari').value = urlParams.get('TalepMiktari');
+        document.getElementById('UrunGrubu').value = urlParams.get('UrunGrubu');
+
+    });
+</script>
+
+

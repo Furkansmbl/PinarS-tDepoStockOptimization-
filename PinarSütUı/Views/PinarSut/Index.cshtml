@@ -1,0 +1,263 @@
+﻿@model List<ResultPinarSutDto>
+<style>
+    .urunler{
+        display:flex;
+        flex-direction: row;
+    }
+</style>
+<div class="container-fluid pt-4 px-2">
+    <div class="row">
+        
+        <div class="col-lg-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Uretim Hatlari</h6>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">UrunKodu</th>
+                                <th scope="col">UrunAdi</th>
+                                <th scope="col">TalepMiktari</th>
+                                <th scope="col">EklenmeTarihi</th>
+                                <th scope="col">UrunGrubu</th>
+                                <th scope="col">Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.UrunKodu</td>
+                                    <td>@item.UrunAdi</td>
+                                    <td>@item.TalepMiktari</td>
+                                    <td>@item.EklenmeTarihi</td>
+                                    <td>@item.UrunGrubu</td>
+                                    <td><a href="#" class="btn btn-outline-success update-btn">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Mekikte Ki Ürünler</h6>
+                <div class="row">
+                    @for (int i = 0; i < 25; i += 5)
+                    {
+                        <div class="col-2">
+                            @for (int j = 0; j < 5; j++)
+                            {
+                                var index = i + j;
+                                <input type="text" class="form-control product-code-box mb-2" value="@Model[index].UrunKodu" readonly>
+                            }
+
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-light urunler rounded h-100 p-4">
+                        <h6 class="mb-4">Yoğurt</h6>
+                        <div class="row">
+                            @for (int i = 1; i <= 15; i++)
+                            {
+                                <div class="col-30">
+                                    <input id="yogurt-product-code-@i" type="text" class="form-control product-code-box mb-2" value="" readonly>
+                                </div>
+                            }
+                            <h6 class="mb-4">Yogurt</h6>
+
+                            @for (int i = 1; i <= 15; i++)
+                            {
+                                <div class="col-30">
+                                    <input id="yogurt-product-code-@i" type="text" class="form-control product-code-box mb-2" value="" readonly>
+                                </div>
+                            }
+                        </div>
+                        <h6 class="mb-4">Ayran</h6>
+                        <div class="row">
+                            @for (int i = 1; i <= 15; i++)
+                            {
+                                <div class="col-30">
+                                    <input id="ayran-product-code-@i" type="text" class="form-control product-code-box mb-2" value="" readonly>
+                                </div>
+                            }
+                            <h6 class="mb-4">Kefir</h6>
+
+                            @for (int i = 1; i <= 15; i++)
+                            {
+                                <div class="col-30">
+                                    <input id="kefir-product-code-@i" type="text" class="form-control product-code-box mb-2" value="" readonly>
+                                </div>
+                            }
+                          
+                        </div>
+                        <h6 class="mb-4">Süzme Peynir</h6>
+                        <div class="row">
+                            @for (int i = 1; i <= 15; i++)
+                            {
+                                <div class="col-25">
+                                    <input id="suzmepeynir-product-code-@i" type="text" class="form-control product-code-box mb-2" value="" readonly>
+                                </div>
+                            }
+                            <h6 class="mb-4">Süzme Peynir</h6>
+
+                            @for (int i = 1; i <= 15; i++)
+                            {
+                                <div class="col-25">
+                                    <input id="suzmepeynir-product-code-@i" type="text" class="form-control product-code-box mb-2" value="" readonly>
+                                </div>
+                            }
+                    </div>
+                        <h6 class="mb-4">Tereyağ</h6>
+                        <div class="row">
+                            @for (int i = 1; i <= 15; i++)
+                            {
+                                <div class="col-25">
+                                    <input id="tereyag-product-code-@i" type="text" class="form-control product-code-box mb-2" value="" readonly>
+                                </div>
+                            }
+                            <h6 class="mb-4">Kaşar</h6>
+
+                            @for (int i = 1; i <= 15; i++)
+                            {
+                                <div class="col-25">
+                                    <input id="kasar-product-code-@i" type="text" class="form-control product-code-box mb-2" value="" readonly>
+                                </div>
+                            }
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var ayranProductCodes = [
+    @foreach (var item in Model)
+    {
+        @if (item.UrunGrubu == "Ayran")
+        {
+            <text>"@item.UrunKodu", </text>
+        }
+    }
+            ];
+
+        ayranProductCodes.forEach((urunKodu, index) => {
+            var inputBox = document.getElementById('ayran-product-code-' + (index + 1));
+            if (inputBox) {
+                inputBox.value = urunKodu;
+            }
+        });
+    });
+        document.addEventListener('DOMContentLoaded', function () {
+            var yogurtProductCodes = [
+        @foreach (var item in Model)
+        {
+            @if (item.UrunGrubu == "Yoğurt")
+            {
+                <text>"@item.UrunKodu", </text>
+            }
+        }
+                    ];
+
+            yogurtProductCodes.forEach((urunKodu, index) => {
+                var inputBox = document.getElementById('yogurt-product-code-' + (index + 1));
+                if (inputBox) {
+                    inputBox.value = urunKodu;
+                }
+            });
+        });
+    document.addEventListener('DOMContentLoaded', function () {
+        var kefirProductCodes = [
+    @foreach (var item in Model)
+    {
+        @if (item.UrunGrubu == "Kefir")
+        {
+            <text>"@item.UrunKodu", </text>
+        }
+    }
+                ];
+
+        kefirProductCodes.forEach((urunKodu, index) => {
+            var inputBox = document.getElementById('kefir-product-code-' + (index + 1));
+            if (inputBox) {
+                inputBox.value = urunKodu;
+            }
+        });
+    });
+        document.addEventListener('DOMContentLoaded', function () {
+            var suzmePeynirProductCodes = [
+        @foreach (var item in Model)
+        {
+            @if (item.UrunGrubu == "Süzme Peynir")
+            {
+                <text>"@item.UrunKodu", </text>
+            }
+        }
+                        ];
+
+            suzmePeynirProductCodes.forEach((urunKodu, index) => {
+                var inputBox = document.getElementById('suzmepeynir-product-code-' + (index + 1));
+                if (inputBox) {
+                    inputBox.value = urunKodu;
+                }
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            var tereyagProductCodes = [
+        @foreach (var item in Model)
+        {
+            @if (item.UrunGrubu == "Tereyağ")
+            {
+                <text>"@item.UrunKodu", </text>
+            }
+        }
+                                ];
+
+            tereyagProductCodes.forEach((urunKodu, index) => {
+                var inputBox = document.getElementById('tereyag-product-code-' + (index + 1));
+                if (inputBox) {
+                    inputBox.value = urunKodu;
+                }
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            var kasarProductCodes = [
+        @foreach (var item in Model)
+        {
+            @if (item.UrunGrubu == "Kaşar Peyniri")
+            {
+                <text>"@item.UrunKodu", </text>
+            }
+        }
+                                ];
+
+            kasarProductCodes.forEach((urunKodu, index) => {
+                var inputBox = document.getElementById('kasar-product-code-' + (index + 1));
+                if (inputBox) {
+                    inputBox.value = urunKodu;
+                }
+            });
+        });
+
+    document.querySelectorAll('.update-btn').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var row = this.closest('tr');
+            var urunKodu = row.cells[0].innerText.trim();
+            var urunAdi = row.cells[1].innerText.trim();
+            var talepMiktari = row.cells[2].innerText.trim();
+            var urunGrubu = row.cells[4].innerText.trim();
+
+            var url = "/PinarSut/CreatePinarSut?UrunKodu=" + encodeURIComponent(urunKodu) +
+                "&UrunAdi=" + encodeURIComponent(urunAdi) +
+                "&TalepMiktari=" + encodeURIComponent(talepMiktari) +
+                "&UrunGrubu=" + encodeURIComponent(urunGrubu);
+            window.location.href = url;
+        });
+    });
+</script>
